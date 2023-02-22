@@ -1,0 +1,10 @@
+zone "ghkdtlwns987.com" IN {
+        type master;
+        file "/var/cache/bind/ghkdtlwns987.com.zone";
+};
+
+// REVERSE ZONE
+zone "0.28.172.in-addr.arpa" IN {
+        type master;
+        file "/var/cache/bind/ghkdtlwns987.com.zone.rev";
+};

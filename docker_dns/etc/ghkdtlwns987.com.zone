@@ -1,0 +1,19 @@
+; BIND data file for local loopback interface
+; 
+$TTL    86400
+@       IN      SOA     ghkdtlwns987.com. root.ghkdtlwns987.com. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      ghkdtlwns987.com.
+        IN      A       172.28.0.2
+        MX      10      mail.ghkdtlwns987.com.
+;Arecords
+sw              IN      A       172.28.0.3
+em              IN      A       172.28.0.3
+www             IN      A       172.28.0.3
+mail            IN      A       172.28.0.3
+

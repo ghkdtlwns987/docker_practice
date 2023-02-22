@@ -1,0 +1,33 @@
+version: '3'
+services:
+  docker_dns:
+    build: docker_dns
+    restart: always
+    ports:
+      - "5301:53/udp"
+      - "5301:53/tcp"
+      - "10001:10000/tcp"
+
+    stdin_open: true
+    tty: true
+    privileged: true
+    user: root
+    container_name: docker_dns
+    hostname: ghkdtlwns987
+    volumes:
+      - ./docker_dns/etc/resolv.conf:/etc/resolv.conf
+      - ./docker_dns/etc/named.conf.options:/etc/bind/named.conf.options
+      - ./docker_dns/etc/named.conf.local:/etc/bind/named.conf.local
+      - ./docker_dns/etc/ghkdtlwns987.com.zone:/var/cache/bind/ghkdtlwns987.com.zone
+      - ./docker_dns/etc/ghkdtlwns987.com.zone.rev:/var/cache/bind/ghkdtlwns987.com.zone.rev
+
+  docker_web1:
+    build: docker_web1
+    restart: always
+    stdin_open: true
+    tty: true
+    privileged: true
+    user: root
+    container_name: docker_web1
+    ports:
+      - "11111:80"
