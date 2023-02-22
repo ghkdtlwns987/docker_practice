@@ -20,6 +20,9 @@ services:
       - ./docker_dns/etc/named.conf.local:/etc/bind/named.conf.local
       - ./docker_dns/etc/ghkdtlwns987.com.zone:/var/cache/bind/ghkdtlwns987.com.zone
       - ./docker_dns/etc/ghkdtlwns987.com.zone.rev:/var/cache/bind/ghkdtlwns987.com.zone.rev
+    networks:
+      docker_practice_mynet:
+        ipv4_address: 172.28.0.2
 
   docker_web1:
     build: docker_web1
@@ -31,3 +34,15 @@ services:
     container_name: docker_web1
     ports:
       - "11111:80"
+    networks:
+      docker_practice_mynet:
+        ipv4_address: 172.28.0.3
+
+networks:
+  docker_practice_mynet:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/24
+          gateway: 172.28.0.1
+
